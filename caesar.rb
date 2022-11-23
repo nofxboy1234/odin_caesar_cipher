@@ -1,11 +1,13 @@
-def caesar_cipher(text, _key)
+def caesar_cipher(text, key)
+  new_text = ''
   text.each_char do |char|
-    puts char
+    new_text << (char.ord + key).chr
   end
+  new_text
 end
 
-caesar_cipher('What a string!', 5)
-
+encrypted_text = caesar_cipher('What a string!', 5)
+puts encrypted_text
 # => "Bmfy f xywnsl!"
 
 # Iterate through each character
