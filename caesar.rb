@@ -27,39 +27,23 @@ def caesar_cipher(text, key)
         new_char.upcase! if was_downcased
 
         new_text << new_char
+      else
+        puts 'alphanumeric: normal shift'
+        char = target_ord.chr
+        new_text << char
       end
-      # else
-      #   puts 'alphanumeric: normal shift'
-      #   char = (char.ord + key).chr
-      #   return char
-      # end
     else
       puts 'not alphanumeric'
       new_text << char
     end
   end
 
-  # new_text << if char.match(/^[[:alpha:]]$/)
-  #               puts 'char is alphanumeric'
-  # if target_ord > z_ord
-  #   puts 'alphanumeric: wraps from z to a'
-  #   wrap_offset = (char.ord + key) - 'z'.ord
-  #   ('a'.ord + wrap_offset).chr
-  # else
-  #   puts 'alphanumeric: normal shift'
-  #   char = (char.ord + key).chr
-  #   return char
-  # end
-  # else
-  #   puts 'not alphanumeric'
-  #   char
-  # end
-  # end
   new_text
 end
 
-# encrypted_text = caesar_cipher('What a string!', 5)
-encrypted_text = caesar_cipher('W', 5)
+encrypted_text = caesar_cipher('What a string!', 5)
+# encrypted_text = caesar_cipher('F', -5)
+
 puts "encrypted_text: #{encrypted_text}"
 
 # => "Bmfy f xywnsl!"
