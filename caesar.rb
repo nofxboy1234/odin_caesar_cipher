@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def caesar_cipher(text, key)
   new_text = ''
   text.each_char do |char|
@@ -9,32 +11,18 @@ def caesar_cipher(text, key)
 
     target_ord = char_ord + key
 
-    puts "a_ord: #{a_ord}"
-    puts "z_ord: #{z_ord}"
-    puts "char_ord: #{char_ord}"
-    puts "target_ord: #{target_ord}"
-
-    puts "was_downcased: #{was_downcased}"
-    puts "char: #{char}"
-
     if char.match(/^[[:alpha:]]$/)
-      puts 'char is alphanumeric'
       if target_ord > z_ord
-        puts 'alphanumeric: wraps from z to a'
         wrap_offset = target_ord - z_ord
+
         new_char = (a_ord + wrap_offset - 1).chr
-
         new_char.upcase! if was_downcased
-
-        new_text << new_char
       else
-        puts 'alphanumeric: normal shift'
-        char = target_ord.chr
-        new_text << char
+        new_char = target_ord.chr
       end
+      new_text += new_char
     else
-      puts 'not alphanumeric'
-      new_text << char
+      new_text += char
     end
   end
 
