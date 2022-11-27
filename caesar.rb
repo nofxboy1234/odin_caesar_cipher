@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-def get_alphanum_char(target_ord, a_ord, z_ord, was_downcased, _new_text)
+def get_alphanum_char(target_ord, a_ord, z_ord, was_downcased)
   if target_ord > z_ord
     wrap_offset = target_ord - z_ord
     new_char = (a_ord + wrap_offset - 1).chr
@@ -20,12 +20,11 @@ def caesar_cipher(text, key)
     was_downcased = (char != char.downcase)
     target_ord = char_ord + key
 
-    if char.match(/^[[:alpha:]]$/)
-      new_char = get_alphanum_char target_ord, a_ord, z_ord, was_downcased, new_text
-      new_text += new_char
-    else
-      new_text += char
-    end
+    new_text += if char.match(/^[[:alpha:]]$/)
+                  get_alphanum_char target_ord, a_ord, z_ord, was_downcased
+                else
+                  char
+                end
   end
   new_text
 end
