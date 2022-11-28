@@ -20,7 +20,13 @@ def calculate_wrap(target_ord)
   end
 end
 
+def simplify_wrapping_key(key)
+  key.positive? ? key % 26 : -(key.abs % 26)
+end
+
 def get_alphanum_char(char, key)
+  key = simplify_wrapping_key(key)
+
   was_downcased = (char != char.downcase)
   target_ord = char.downcase.ord + key
 
@@ -35,7 +41,7 @@ def alphanum?(char)
 end
 
 def caesar_cipher(text, key, decrypt: false)
-  key = decrypt ? key * -1 : key
+  key = decrypt ? -key : key
   new_text = ''
   text.each_char do |char|
     new_text += if alphanum?(char)
@@ -75,14 +81,14 @@ puts "encrypted_text: #{encrypted_text}"
 decrypted_text = caesar_cipher('Zz', -5, decrypt: true)
 puts "decrypted_text: #{decrypted_text}"
 
-# encrypted_text = caesar_cipher('Zz', 83)
-# puts "encrypted_text: #{encrypted_text}"
+encrypted_text = caesar_cipher('Zz', 83)
+puts "encrypted_text: #{encrypted_text}"
 
-# encrypted_text = caesar_cipher('Ee', -83)
-# puts "encrypted_text: #{encrypted_text}"
+encrypted_text = caesar_cipher('Ee', -83)
+puts "encrypted_text: #{encrypted_text}"
 
-# encrypted_text = caesar_cipher('Hello, World!', 75)
-# puts "encrypted_text: #{encrypted_text}"
+encrypted_text = caesar_cipher('Hello, World!', 75)
+puts "encrypted_text: #{encrypted_text}"
 
-# encrypted_text = caesar_cipher('Hello, World!', -55)
-# puts "encrypted_text: #{encrypted_text}"
+encrypted_text = caesar_cipher('Hello, World!', -55)
+puts "encrypted_text: #{encrypted_text}"
