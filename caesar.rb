@@ -34,7 +34,8 @@ def alphanum?(char)
   char.match(/^[[:alpha:]]$/)
 end
 
-def caesar_cipher(text, key)
+def caesar_cipher(text, key, decrypt: false)
+  key = decrypt ? key * -1 : key
   new_text = ''
   text.each_char do |char|
     new_text += if alphanum?(char)
@@ -50,23 +51,29 @@ encrypted_text = caesar_cipher('What a string!', 5)
 puts "encrypted_text: #{encrypted_text}"
 # => "Bmfy f xywnsl!"
 
-encrypted_text = caesar_cipher('z', 5)
-puts "encrypted_text: #{encrypted_text}"
+decrypted_text = caesar_cipher('Bmfy f xywnsl!', 5, decrypt: true)
+puts "decrypted_text: #{decrypted_text}"
 
-encrypted_text = caesar_cipher('a', -1)
-puts "encrypted_text: #{encrypted_text}"
+# encrypted_text = caesar_cipher('z', 5)
+# puts "encrypted_text: #{encrypted_text}"
 
-encrypted_text = caesar_cipher('A', -1)
-puts "encrypted_text: #{encrypted_text}"
+# encrypted_text = caesar_cipher('a', -1)
+# puts "encrypted_text: #{encrypted_text}"
 
-encrypted_text = caesar_cipher('A', -3)
-puts "encrypted_text: #{encrypted_text}"
+# encrypted_text = caesar_cipher('A', -1)
+# puts "encrypted_text: #{encrypted_text}"
 
-encrypted_text = caesar_cipher('Zz', 5)
-puts "encrypted_text: #{encrypted_text}"
+# encrypted_text = caesar_cipher('A', -3)
+# puts "encrypted_text: #{encrypted_text}"
+
+# encrypted_text = caesar_cipher('Zz', 5)
+# puts "encrypted_text: #{encrypted_text}"
 
 encrypted_text = caesar_cipher('Ee', -5)
 puts "encrypted_text: #{encrypted_text}"
+
+decrypted_text = caesar_cipher('Zz', -5, decrypt: true)
+puts "decrypted_text: #{decrypted_text}"
 
 # encrypted_text = caesar_cipher('Zz', 83)
 # puts "encrypted_text: #{encrypted_text}"
