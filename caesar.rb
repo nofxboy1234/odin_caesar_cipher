@@ -47,11 +47,35 @@ def caesar_cipher(text, key)
 end
 
 encrypted_text = caesar_cipher('What a string!', 5)
-# encrypted_text = caesar_cipher('z', 5)
-# encrypted_text = caesar_cipher('a', -1)
-# encrypted_text = caesar_cipher('A', -1)
-# encrypted_text = caesar_cipher('A', -3)
+puts "encrypted_text: #{encrypted_text}"
+# => "Bmfy f xywnsl!"
 
+encrypted_text = caesar_cipher('z', 5)
 puts "encrypted_text: #{encrypted_text}"
 
-# => "Bmfy f xywnsl!"
+encrypted_text = caesar_cipher('a', -1)
+puts "encrypted_text: #{encrypted_text}"
+
+encrypted_text = caesar_cipher('A', -1)
+puts "encrypted_text: #{encrypted_text}"
+
+encrypted_text = caesar_cipher('A', -3)
+puts "encrypted_text: #{encrypted_text}"
+
+encrypted_text = caesar_cipher('Zz', 5)
+puts "encrypted_text: #{encrypted_text}"
+
+encrypted_text = caesar_cipher('Ee', -5)
+puts "encrypted_text: #{encrypted_text}"
+
+# encrypted_text = caesar_cipher('Zz', 83)
+# puts "encrypted_text: #{encrypted_text}"
+
+# encrypted_text = caesar_cipher('Ee', -83)
+# puts "encrypted_text: #{encrypted_text}"
+
+# encrypted_text = caesar_cipher('Hello, World!', 75)
+# puts "encrypted_text: #{encrypted_text}"
+
+# encrypted_text = caesar_cipher('Hello, World!', -55)
+# puts "encrypted_text: #{encrypted_text}"
