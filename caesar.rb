@@ -33,10 +33,3 @@ encrypted_text = caesar_cipher('What a string!', 5)
 puts "encrypted_text: #{encrypted_text}"
 
 # => "Bmfy f xywnsl!"
-
-# Iterate through each character
-# Convert string into a number.
-# Add key number
-# Wrap from z to a.
-# Keep the same case.
-# return new string
