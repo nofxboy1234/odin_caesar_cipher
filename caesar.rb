@@ -1,15 +1,31 @@
 # frozen_string_literal: true
 
+def wrap_z_to_a(target_ord)
+  wrap_offset = target_ord - 'z'.ord
+  ('a'.ord + wrap_offset - 1).chr
+end
+
+def wrap_a_to_z(target_ord)
+  wrap_offset = 'a'.ord - target_ord
+  ('z'.ord - wrap_offset + 1).chr
+end
+
+def calculate_wrap(target_ord)
+  if target_ord > 'z'.ord
+    wrap_z_to_a(target_ord)
+  elsif target_ord < 'a'.ord
+    wrap_a_to_z(target_ord)
+  else
+    target_ord.chr
+  end
+end
+
 def get_alphanum_char(char, key)
   was_downcased = (char != char.downcase)
   target_ord = char.downcase.ord + key
 
-  if target_ord > 'z'.ord
-    wrap_offset = target_ord - 'z'.ord
-    new_char = ('a'.ord + wrap_offset - 1).chr
-  else
-    new_char = target_ord.chr
-  end
+  new_char = calculate_wrap(target_ord)
+
   new_char.upcase! if was_downcased
   new_char
 end
@@ -31,8 +47,10 @@ def caesar_cipher(text, key)
 end
 
 encrypted_text = caesar_cipher('What a string!', 5)
-# encrypted_text = caesar_cipher('F', -5)
+# encrypted_text = caesar_cipher('z', 5)
 # encrypted_text = caesar_cipher('a', -1)
+# encrypted_text = caesar_cipher('A', -1)
+# encrypted_text = caesar_cipher('A', -3)
 
 puts "encrypted_text: #{encrypted_text}"
 
