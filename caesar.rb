@@ -14,10 +14,14 @@ def get_alphanum_char(char, key)
   new_char
 end
 
+def alphanum?(char)
+  char.match(/^[[:alpha:]]$/)
+end
+
 def caesar_cipher(text, key)
   new_text = ''
   text.each_char do |char|
-    new_text += if char.match(/^[[:alpha:]]$/)
+    new_text += if alphanum?(char)
                   get_alphanum_char(char, key)
                 else
                   char
