@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pry-byebug'
+
 def wrap_z_to_a(target_ord)
   wrap_offset = target_ord - 'z'.ord
   ('a'.ord + wrap_offset - 1).chr
@@ -52,27 +54,3 @@ def caesar_cipher(text, key, decrypt: false)
   end
   new_text
 end
-
-encrypted_text = caesar_cipher('What a string!', 5)
-puts "encrypted_text: #{encrypted_text}"
-
-decrypted_text = caesar_cipher('Bmfy f xywnsl!', 5, decrypt: true)
-puts "decrypted_text: #{decrypted_text}"
-
-encrypted_text = caesar_cipher('Ee', -5)
-puts "encrypted_text: #{encrypted_text}"
-
-decrypted_text = caesar_cipher('Zz', -5, decrypt: true)
-puts "decrypted_text: #{decrypted_text}"
-
-encrypted_text = caesar_cipher('Zz', 83)
-puts "encrypted_text: #{encrypted_text}"
-
-encrypted_text = caesar_cipher('Ee', -83)
-puts "encrypted_text: #{encrypted_text}"
-
-encrypted_text = caesar_cipher('Hello, World!', 75)
-puts "encrypted_text: #{encrypted_text}"
-
-encrypted_text = caesar_cipher('Hello, World!', -55)
-puts "encrypted_text: #{encrypted_text}"
