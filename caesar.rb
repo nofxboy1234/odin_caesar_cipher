@@ -55,25 +55,9 @@ end
 
 encrypted_text = caesar_cipher('What a string!', 5)
 puts "encrypted_text: #{encrypted_text}"
-# => "Bmfy f xywnsl!"
 
 decrypted_text = caesar_cipher('Bmfy f xywnsl!', 5, decrypt: true)
 puts "decrypted_text: #{decrypted_text}"
-
-# encrypted_text = caesar_cipher('z', 5)
-# puts "encrypted_text: #{encrypted_text}"
-
-# encrypted_text = caesar_cipher('a', -1)
-# puts "encrypted_text: #{encrypted_text}"
-
-# encrypted_text = caesar_cipher('A', -1)
-# puts "encrypted_text: #{encrypted_text}"
-
-# encrypted_text = caesar_cipher('A', -3)
-# puts "encrypted_text: #{encrypted_text}"
-
-# encrypted_text = caesar_cipher('Zz', 5)
-# puts "encrypted_text: #{encrypted_text}"
 
 encrypted_text = caesar_cipher('Ee', -5)
 puts "encrypted_text: #{encrypted_text}"
